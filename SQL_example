@@ -1,0 +1,7 @@
+#select top3 students from each class
+
+SELECT * 
+FROM student s
+WHERE ((SELECT COUNT(*)+1
+        FROM student
+        WHERE student.class = s.class and student.score > s.score) <= 3)
